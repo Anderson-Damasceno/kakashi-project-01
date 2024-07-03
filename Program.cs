@@ -1,10 +1,14 @@
+using Microsoft.EntityFrameworkCore;
 using TodoList.Components;
+using TodoList.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+var connectionStr = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddDbContext<TodoContext>(o => o.UseSqlite(connectionStr));
 
 var app = builder.Build();
 
