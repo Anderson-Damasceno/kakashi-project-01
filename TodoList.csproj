@@ -9,6 +9,8 @@
     <ItemGroup>
       <Content Remove="Components\Pages\Weather.razor" />
       <Content Remove="Components\Pages\Counter.razor" />
+      <Content Remove="Components\Pages\TodoList.cshtml" />
+      <Content Remove="Components\Pages\TodoList.razor" />
     </ItemGroup>
 
     <ItemGroup>
@@ -17,6 +19,10 @@
         <PrivateAssets>all</PrivateAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqLite" Version="8.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Components\Pages\TodoList.cshtml.cs" />
     </ItemGroup>
 
 </Project>
