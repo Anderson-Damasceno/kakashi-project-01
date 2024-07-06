@@ -1,4 +1,5 @@
 ﻿@page "/todolist"
+@using TodoList.Components.Components
 
 <PageTitle>Lista de Tarefas</PageTitle>
 
@@ -17,7 +18,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr style="cursor: pointer; text-decoration: line-through" class="table-danger">
         <td>Title</td>
         <td>Priority</td>
         <td>Done</td>
@@ -25,6 +26,11 @@
         <td>
             <button class="btn btn-dark">Editar</button>
             <button class="btn btn-danger">Excluir</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <TodoForm />
         </td>
     </tr>
     </tbody>
