@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TodoList.Data;
+using TodoList.Interfaces;
 using TodoList.Models;
 
 namespace TodoList.Services;
 
-public class TodoService
+public class TodoService : ITodoService
 {
     private readonly TodoContext _context;
 

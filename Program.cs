@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TodoList.Components;
 using TodoList.Data;
+using TodoList.Interfaces;
+using TodoList.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 var connectionStr = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<TodoContext>(o => o.UseSqlite(connectionStr));
+
+builder.Services.AddScoped<ITodoService,TodoService>();
 
 var app = builder.Build();
 

@@ -1,18 +1,43 @@
-﻿<h4 class="mt-2"> Modificar Tarefa</h4>
-<form>
-<div class="mt-2">
-    <label class="form-label">Título</label>
-    <input class="form-control"/>
-</div>
-<div class="mt-2">
-    <label class="form-label">Prioridade:</label>
-    <select class="form-select">
-        <option value="null">-- Selecione --</option>
-        <option value="null">Urgente</option>
-    </select>
-</div>
-<div class="mt-4 mb-2">
-    <button class="btn btn-dark">Salvar</button>
-    <button class="btn btn-outline-secondary">Cancelar</button>
-</div>
-</form>
+﻿@using TodoList.Enums
+@using TodoList.Interfaces
+@using TodoList.Models
+@inject ITodoService todoService
+
+@if (EditedTodo is not null)
+{
+    <h4 class="mt-2"> Modificar Tarefa</h4>
+    <form>
+        <div class="mt-2">
+            <label class="form-label">Título:</label>
+            <InputText class="form-control" required @bind-Value="EditedTodo.Title"/>
+        </div>
+        <div class="mt-2">
+            <label class="form-label">Descrição:</label>
+            <InputTextArea class="form-control" required @bind-Value="EditedTodo.Description"/>
+        </div>
+        <div class="mt-2">
+            <label class="form-label">Prioridade:</label>
+            <select class="form-select" @bind="EditedTodo.Priority">
+                <option value="null">-- Selecione --</option>
+                @foreach (var item in Enum.GetValues(typeof(TodoPriority)))
+                {
+                    <option value="@item">@item</option>
+                }
+                
+            </select>
+        </div>
+        <div class="mt-4 mb-2">
+            <button class="btn btn-dark">Salvar</button>
+            <button class="btn btn-outline-secondary">Cancelar</button>
+        </div>
+    </form>
+}
+
+@code {
+    [Parameter]
+    public Todo? EditedTodo { get; set; }
+    
+    
+    
+
+}
